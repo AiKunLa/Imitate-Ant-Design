@@ -1,0 +1,351 @@
+// ============================================
+// 基础组件样式
+// ============================================
+
+@use "sass:color";
+@use "sass:map";
+@use "variables" as *;
+
+// ============================================
+// 按钮组件
+// ============================================
+
+.btn {
+  display: inline-block;
+  padding: $btn-padding-y $btn-padding-x;
+  font-family: $btn-font-family;
+  font-size: $btn-font-size;
+  font-weight: $btn-font-weight;
+  line-height: $btn-line-height;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: $btn-border-width solid transparent;
+  border-radius: $btn-border-radius;
+  transition: $btn-transition;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba($primary, 0.25);
+  }
+
+  &:disabled,
+  &.disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+// 按钮变体
+@each $name, $color in $colors {
+  .btn-#{$name} {
+    color: $white;
+    background-color: $color;
+    border-color: $color;
+
+    &:hover {
+      background-color: color.adjust($color, $lightness: -10%);
+      border-color: color.adjust($color, $lightness: -10%);
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.2rem rgba($color, 0.5);
+    }
+  }
+
+  .btn-outline-#{$name} {
+    color: $color;
+    background-color: transparent;
+    border-color: $color;
+
+    &:hover {
+      color: $white;
+      background-color: $color;
+      border-color: $color;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.2rem rgba($color, 0.5);
+    }
+  }
+}
+
+// 按钮尺寸
+.btn-sm {
+  padding: $btn-padding-y * 0.5 $btn-padding-x * 0.75;
+  font-size: $font-size-sm;
+  border-radius: $radius-sm;
+}
+
+.btn-lg {
+  padding: $btn-padding-y * 1.5 $btn-padding-x * 2;
+  font-size: $font-size-lg;
+  border-radius: $radius-lg;
+}
+
+// ============================================
+// 表单组件
+// ============================================
+
+.form-group {
+  margin-bottom: $spacing-4;
+}
+
+.form-label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-weight: $font-weight-medium;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: $input-padding-y $input-padding-x;
+  font-family: $input-font-family;
+  font-size: $input-font-size;
+  font-weight: $input-font-weight;
+  line-height: $input-line-height;
+  color: $input-color;
+  background-color: $input-bg;
+  border: $input-border-width solid $input-border-color;
+  border-radius: $input-border-radius;
+  transition: $input-transition;
+
+  &:focus {
+    color: $input-color;
+    background-color: $input-bg;
+    border-color: $input-focus-border-color;
+    outline: 0;
+    box-shadow: $input-focus-box-shadow;
+  }
+
+  &::placeholder {
+    color: $gray-500;
+    opacity: 1;
+  }
+
+  &:disabled,
+  &[readonly] {
+    background-color: $gray-200;
+    opacity: 1;
+    cursor: not-allowed;
+  }
+}
+
+.form-control-sm {
+  padding: $input-padding-y * 0.5 $input-padding-x * 0.75;
+  font-size: $font-size-sm;
+  border-radius: $radius-sm;
+}
+
+.form-control-lg {
+  padding: $input-padding-y * 1.5 $input-padding-x * 2;
+  font-size: $font-size-lg;
+  border-radius: $radius-lg;
+}
+
+.form-text {
+  margin-top: 0.25rem;
+  font-size: $font-size-sm;
+  color: $gray-600;
+}
+
+.form-check {
+  display: block;
+  min-height: 1.5rem;
+  padding-left: 1.5em;
+  margin-bottom: 0.125rem;
+
+  .form-check-input {
+    float: left;
+    margin-left: -1.5em;
+  }
+
+  .form-check-label {
+    cursor: pointer;
+  }
+}
+
+.form-check-input {
+  width: 1em;
+  height: 1em;
+  margin-top: 0.25em;
+  vertical-align: top;
+  background-color: $input-bg;
+  border: $input-border-width solid $input-border-color;
+  appearance: none;
+  cursor: pointer;
+
+  &[type="checkbox"] {
+    border-radius: $radius-sm;
+  }
+
+  &[type="radio"] {
+    border-radius: $radius-full;
+  }
+
+  &:checked {
+    background-color: $component-active-bg;
+    border-color: $component-active-bg;
+  }
+
+  &:focus {
+    border-color: $input-focus-border-color;
+    outline: 0;
+    box-shadow: $input-focus-box-shadow;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    filter: none;
+    opacity: 0.5;
+  }
+}
+
+// ============================================
+// 卡片组件
+// ============================================
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: $white;
+  background-clip: border-box;
+  border: $border-width solid $border-color;
+  border-radius: $radius-base;
+  box-shadow: $shadow-base;
+}
+
+.card-header {
+  padding: $spacing-3 $spacing-4;
+  margin-bottom: 0;
+  background-color: $gray-100;
+  border-bottom: $border-width solid $border-color;
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  padding: $spacing-4;
+}
+
+.card-footer {
+  padding: $spacing-3 $spacing-4;
+  background-color: $gray-100;
+  border-top: $border-width solid $border-color;
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+}
+
+.card-title {
+  margin-bottom: $spacing-2;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+}
+
+.card-text {
+  margin-bottom: $spacing-4;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// ============================================
+// 容器组件
+// ============================================
+
+.container {
+  width: 100%;
+  padding-right: $spacing-4;
+  padding-left: $spacing-4;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@each $breakpoint, $max-width in $container-max-widths {
+  @media (min-width: map.get($breakpoints, $breakpoint)) {
+    .container {
+      max-width: $max-width;
+    }
+  }
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: $spacing-4;
+  padding-left: $spacing-4;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// ============================================
+// 表格组件
+// ============================================
+
+.table {
+  width: 100%;
+  margin-bottom: $spacing-4;
+  color: $table-color;
+  vertical-align: top;
+  border-color: $table-border-color;
+
+  > :not(caption) > * > * {
+    padding: $table-cell-padding-y $table-cell-padding-x;
+    background-color: $table-bg;
+    border-bottom-width: $table-border-width;
+    box-shadow: inset 0 0 0 9999px transparent;
+  }
+
+  > tbody {
+    vertical-align: inherit;
+  }
+
+  > thead {
+    vertical-align: bottom;
+  }
+
+  th {
+    font-weight: $font-weight-semibold;
+    text-align: inherit;
+    text-align: -webkit-match-parent;
+  }
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  color: $table-striped-color;
+  background-color: rgba($table-striped-color, $table-striped-bg-factor);
+}
+
+.table-hover > tbody > tr:hover > * {
+  color: $table-hover-color;
+  background-color: rgba($table-hover-color, $table-hover-bg-factor);
+}
+
+.table-bordered {
+  border: $table-border-width solid $table-border-color;
+
+  > :not(caption) > * {
+    border-width: $table-border-width 0;
+
+    > * {
+      border-width: 0 $table-border-width;
+    }
+  }
+}
+
+.table-borderless {
+  > :not(caption) > * > * {
+    border-bottom-width: 0;
+  }
+}

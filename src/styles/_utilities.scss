@@ -1,0 +1,528 @@
+// ============================================
+// 工具类（Utilities）
+// ============================================
+
+@use "sass:map";
+@use "variables" as *;
+
+// 间距工具类
+@each $size, $value in $spacings {
+  // Margin
+  .m-#{$size} {
+    margin: $value !important;
+  }
+  .mt-#{$size} {
+    margin-top: $value !important;
+  }
+  .mr-#{$size} {
+    margin-right: $value !important;
+  }
+  .mb-#{$size} {
+    margin-bottom: $value !important;
+  }
+  .ml-#{$size} {
+    margin-left: $value !important;
+  }
+  .mx-#{$size} {
+    margin-left: $value !important;
+    margin-right: $value !important;
+  }
+  .my-#{$size} {
+    margin-top: $value !important;
+    margin-bottom: $value !important;
+  }
+
+  // Padding
+  .p-#{$size} {
+    padding: $value !important;
+  }
+  .pt-#{$size} {
+    padding-top: $value !important;
+  }
+  .pr-#{$size} {
+    padding-right: $value !important;
+  }
+  .pb-#{$size} {
+    padding-bottom: $value !important;
+  }
+  .pl-#{$size} {
+    padding-left: $value !important;
+  }
+  .px-#{$size} {
+    padding-left: $value !important;
+    padding-right: $value !important;
+  }
+  .py-#{$size} {
+    padding-top: $value !important;
+    padding-bottom: $value !important;
+  }
+}
+
+// 自动边距
+.m-auto {
+  margin: auto !important;
+}
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.my-auto {
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+}
+
+// ============================================
+// 显示工具类
+// ============================================
+
+.d-none {
+  display: none !important;
+}
+.d-inline {
+  display: inline !important;
+}
+.d-inline-block {
+  display: inline-block !important;
+}
+.d-block {
+  display: block !important;
+}
+.d-flex {
+  display: flex !important;
+}
+.d-inline-flex {
+  display: inline-flex !important;
+}
+.d-grid {
+  display: grid !important;
+}
+
+// Flexbox 工具类
+.flex-row {
+  flex-direction: row !important;
+}
+.flex-column {
+  flex-direction: column !important;
+}
+.flex-wrap {
+  flex-wrap: wrap !important;
+}
+.flex-nowrap {
+  flex-wrap: nowrap !important;
+}
+.justify-start {
+  justify-content: flex-start !important;
+}
+.justify-end {
+  justify-content: flex-end !important;
+}
+.justify-center {
+  justify-content: center !important;
+}
+.justify-between {
+  justify-content: space-between !important;
+}
+.justify-around {
+  justify-content: space-around !important;
+}
+.align-start {
+  align-items: flex-start !important;
+}
+.align-end {
+  align-items: flex-end !important;
+}
+.align-center {
+  align-items: center !important;
+}
+.align-stretch {
+  align-items: stretch !important;
+}
+.align-self-start {
+  align-self: flex-start !important;
+}
+.align-self-end {
+  align-self: flex-end !important;
+}
+.align-self-center {
+  align-self: center !important;
+}
+.flex-grow-1 {
+  flex-grow: 1 !important;
+}
+.flex-shrink-0 {
+  flex-shrink: 0 !important;
+}
+
+// ============================================
+// 文本工具类
+// ============================================
+
+// 文本对齐
+.text-left {
+  text-align: left !important;
+}
+.text-right {
+  text-align: right !important;
+}
+.text-center {
+  text-align: center !important;
+}
+.text-justify {
+  text-align: justify !important;
+}
+
+// 文本转换
+.text-lowercase {
+  text-transform: lowercase !important;
+}
+.text-uppercase {
+  text-transform: uppercase !important;
+}
+.text-capitalize {
+  text-transform: capitalize !important;
+}
+
+// 文本装饰
+.text-decoration-none {
+  text-decoration: none !important;
+}
+.text-decoration-underline {
+  text-decoration: underline !important;
+}
+
+// 字体权重
+.font-weight-light {
+  font-weight: $font-weight-light !important;
+}
+.font-weight-normal {
+  font-weight: $font-weight-normal !important;
+}
+.font-weight-medium {
+  font-weight: $font-weight-medium !important;
+}
+.font-weight-semibold {
+  font-weight: $font-weight-semibold !important;
+}
+.font-weight-bold {
+  font-weight: $font-weight-bold !important;
+}
+
+// 字体大小
+.font-size-xs {
+  font-size: $font-size-xs !important;
+}
+.font-size-sm {
+  font-size: $font-size-sm !important;
+}
+.font-size-base {
+  font-size: $font-size-base !important;
+}
+.font-size-lg {
+  font-size: $font-size-lg !important;
+}
+.font-size-xl {
+  font-size: $font-size-xl !important;
+}
+.font-size-2xl {
+  font-size: $font-size-2xl !important;
+}
+.font-size-3xl {
+  font-size: $font-size-3xl !important;
+}
+.font-size-4xl {
+  font-size: $font-size-4xl !important;
+}
+
+// 文本颜色
+@each $name, $color in $colors {
+  .text-#{$name} {
+    color: $color !important;
+  }
+}
+
+// 灰度文本颜色
+.text-gray-50 {
+  color: $gray-50 !important;
+}
+.text-gray-100 {
+  color: $gray-100 !important;
+}
+.text-gray-200 {
+  color: $gray-200 !important;
+}
+.text-gray-300 {
+  color: $gray-300 !important;
+}
+.text-gray-400 {
+  color: $gray-400 !important;
+}
+.text-gray-500 {
+  color: $gray-500 !important;
+}
+.text-gray-600 {
+  color: $gray-600 !important;
+}
+.text-gray-700 {
+  color: $gray-700 !important;
+}
+.text-gray-800 {
+  color: $gray-800 !important;
+}
+.text-gray-900 {
+  color: $gray-900 !important;
+}
+
+.text-white {
+  color: $white !important;
+}
+.text-black {
+  color: $black !important;
+}
+
+// 文本截断
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-break {
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+}
+
+// ============================================
+// 背景颜色工具类
+// ============================================
+
+@each $name, $color in $colors {
+  .bg-#{$name} {
+    background-color: $color !important;
+  }
+}
+
+// 灰度背景颜色
+.bg-gray-50 {
+  background-color: $gray-50 !important;
+}
+.bg-gray-100 {
+  background-color: $gray-100 !important;
+}
+.bg-gray-200 {
+  background-color: $gray-200 !important;
+}
+.bg-gray-300 {
+  background-color: $gray-300 !important;
+}
+.bg-gray-400 {
+  background-color: $gray-400 !important;
+}
+.bg-gray-500 {
+  background-color: $gray-500 !important;
+}
+.bg-gray-600 {
+  background-color: $gray-600 !important;
+}
+.bg-gray-700 {
+  background-color: $gray-700 !important;
+}
+.bg-gray-800 {
+  background-color: $gray-800 !important;
+}
+.bg-gray-900 {
+  background-color: $gray-900 !important;
+}
+
+.bg-white {
+  background-color: $white !important;
+}
+.bg-transparent {
+  background-color: transparent !important;
+}
+
+// ============================================
+// 边框工具类
+// ============================================
+
+.border {
+  border: $border-width solid $border-color !important;
+}
+.border-top {
+  border-top: $border-width solid $border-color !important;
+}
+.border-right {
+  border-right: $border-width solid $border-color !important;
+}
+.border-bottom {
+  border-bottom: $border-width solid $border-color !important;
+}
+.border-left {
+  border-left: $border-width solid $border-color !important;
+}
+.border-0 {
+  border: 0 !important;
+}
+
+// 边框颜色
+@each $name, $color in $colors {
+  .border-#{$name} {
+    border-color: $color !important;
+  }
+}
+
+// 圆角
+.rounded-none {
+  border-radius: $radius-none !important;
+}
+.rounded-sm {
+  border-radius: $radius-sm !important;
+}
+.rounded {
+  border-radius: $radius-base !important;
+}
+.rounded-md {
+  border-radius: $radius-md !important;
+}
+.rounded-lg {
+  border-radius: $radius-lg !important;
+}
+.rounded-xl {
+  border-radius: $radius-xl !important;
+}
+.rounded-2xl {
+  border-radius: $radius-2xl !important;
+}
+.rounded-full {
+  border-radius: $radius-full !important;
+}
+
+// ============================================
+// 阴影工具类
+// ============================================
+
+.shadow-xs {
+  box-shadow: $shadow-xs !important;
+}
+.shadow-sm {
+  box-shadow: $shadow-sm !important;
+}
+.shadow {
+  box-shadow: $shadow-base !important;
+}
+.shadow-md {
+  box-shadow: $shadow-md !important;
+}
+.shadow-lg {
+  box-shadow: $shadow-lg !important;
+}
+.shadow-xl {
+  box-shadow: $shadow-xl !important;
+}
+.shadow-none {
+  box-shadow: none !important;
+}
+
+// ============================================
+// 位置工具类
+// ============================================
+
+.position-static {
+  position: static !important;
+}
+.position-relative {
+  position: relative !important;
+}
+.position-absolute {
+  position: absolute !important;
+}
+.position-fixed {
+  position: fixed !important;
+}
+.position-sticky {
+  position: sticky !important;
+}
+
+// ============================================
+// 宽度和高度工具类
+// ============================================
+
+.w-25 {
+  width: 25% !important;
+}
+.w-50 {
+  width: 50% !important;
+}
+.w-75 {
+  width: 75% !important;
+}
+.w-100 {
+  width: 100% !important;
+}
+.w-auto {
+  width: auto !important;
+}
+
+.h-25 {
+  height: 25% !important;
+}
+.h-50 {
+  height: 50% !important;
+}
+.h-75 {
+  height: 75% !important;
+}
+.h-100 {
+  height: 100% !important;
+}
+.h-auto {
+  height: auto !important;
+}
+
+.mw-100 {
+  max-width: 100% !important;
+}
+.mh-100 {
+  max-height: 100% !important;
+}
+
+// ============================================
+// 溢出工具类
+// ============================================
+
+.overflow-auto {
+  overflow: auto !important;
+}
+.overflow-hidden {
+  overflow: hidden !important;
+}
+.overflow-visible {
+  overflow: visible !important;
+}
+.overflow-scroll {
+  overflow: scroll !important;
+}
+
+// ============================================
+// 响应式工具类（示例：md 断点）
+// ============================================
+
+@media (min-width: map.get($breakpoints, md)) {
+  .d-md-none {
+    display: none !important;
+  }
+  .d-md-block {
+    display: block !important;
+  }
+  .d-md-flex {
+    display: flex !important;
+  }
+  .text-md-left {
+    text-align: left !important;
+  }
+  .text-md-center {
+    text-align: center !important;
+  }
+  .text-md-right {
+    text-align: right !important;
+  }
+}

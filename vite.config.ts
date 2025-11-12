@@ -13,8 +13,9 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        // 注意：结尾必须有分号！
-        additionalData: `@import "@/styles/variables.scss";`
+        // 使用 @use 替代 @import（已弃用）
+        // 如果需要全局变量，可以在组件中单独 @use "variables" as *
+        // additionalData: `@use "@/styles/variables.scss" as *;`
       }
     }
   }

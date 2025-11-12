@@ -1,0 +1,335 @@
+@use "variables" as *;
+
+// ============================================
+// CSS Reset - 现代简洁重置
+// 设计理念：简洁、美观、现代
+// ============================================
+
+// 基础重置
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+  font-size: 16px; // 确保 rem 基准
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// Body 基础样式
+body {
+  font-family: $body-font-family;
+  font-size: $body-font-size;
+  font-weight: $body-font-weight;
+  line-height: $body-line-height;
+  color: $body-color;
+  background-color: $body-bg;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+// 标题样式 - 现代层次
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: $heading-font-weight;
+  line-height: $heading-line-height;
+  color: $heading-color;
+  letter-spacing: $letter-spacing-tight;
+}
+
+h1 {
+  font-size: $h1-size;
+  margin-bottom: $heading-margin-bottom;
+}
+
+h2 {
+  font-size: $h2-size;
+  margin-bottom: $heading-margin-bottom;
+}
+
+h3 {
+  font-size: $h3-size;
+  margin-bottom: $heading-margin-bottom;
+}
+
+h4 {
+  font-size: $h4-size;
+  margin-bottom: $heading-margin-bottom;
+}
+
+h5 {
+  font-size: $h5-size;
+  margin-bottom: $heading-margin-bottom;
+}
+
+h6 {
+  font-size: $h6-size;
+  margin-bottom: $heading-margin-bottom;
+}
+
+// 段落
+p {
+  margin: 0;
+  margin-bottom: $spacing-4;
+}
+
+// 链接 - 现代交互
+a {
+  color: $link-color;
+  text-decoration: $link-decoration;
+  transition: $link-transition;
+
+  &:hover {
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $primary;
+    outline-offset: 2px;
+    border-radius: $radius-sm;
+  }
+}
+
+// 列表
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+// 图片和媒体 - 响应式
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// 表单元素 - 现代样式
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  transition: $transition-fast;
+
+  &:focus-visible {
+    outline: 2px solid $primary;
+    outline-offset: 2px;
+    border-radius: $radius-sm;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+input,
+textarea,
+select {
+  &:focus-visible {
+    outline: 2px solid $primary;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+// 代码 - 现代代码样式
+code,
+kbd,
+samp,
+pre {
+  font-family: $font-family-mono;
+  font-size: 0.9em;
+}
+
+code {
+  padding: 0.125rem 0.375rem;
+  background-color: $bg-tertiary;
+  border-radius: $radius-sm;
+  color: $error;
+  font-size: 0.875em;
+}
+
+pre {
+  overflow-x: auto;
+  padding: $spacing-4;
+  background-color: $bg-secondary;
+  border-radius: $radius-base;
+  line-height: $line-height-relaxed;
+  border: $border-width solid $border-light;
+
+  code {
+    padding: 0;
+    background-color: transparent;
+    color: inherit;
+    border: none;
+  }
+}
+
+// 表格 - 简洁现代
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+th,
+td {
+  padding: $spacing-2 $spacing-4;
+  text-align: left;
+  border-bottom: $border-width solid $border-light;
+}
+
+th {
+  font-weight: $font-weight-semibold;
+  color: $text-primary;
+}
+
+// 水平线 - 简洁分隔
+hr {
+  border: none;
+  border-top: $border-width solid $border-light;
+  margin: $spacing-6 0;
+}
+
+// 引用 - 现代引用样式
+blockquote {
+  margin: 0;
+  padding-left: $spacing-4;
+  border-left: 3px solid $border-base;
+  color: $text-secondary;
+  font-style: italic;
+}
+
+// 文本选择 - 品牌色
+::selection {
+  background-color: rgba($primary, 0.2);
+  color: $text-primary;
+}
+
+::-moz-selection {
+  background-color: rgba($primary, 0.2);
+  color: $text-primary;
+}
+
+// 滚动条样式 - 现代简洁（Webkit）
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $bg-secondary;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $gray-400;
+  border-radius: $radius-full;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $gray-500;
+  }
+}
+
+// Firefox 滚动条
+* {
+  scrollbar-width: thin;
+  scrollbar-color: $gray-400 $bg-secondary;
+}
+
+// 隐藏元素
+[hidden] {
+  display: none !important;
+}
+
+// 屏幕阅读器专用
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+// 清除浮动
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+// 文本工具类
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-select-none {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
